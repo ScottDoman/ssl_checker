@@ -13,17 +13,14 @@ use x509_parser::prelude::*;
 #[derive(Parser, Debug)]
 #[command(author, version, about = "Monitors SSL certificates from a list of URLs")]
 struct Args {
-    /// Path to the text file containing URLs
     #[arg(short, long, default_value = "urls.txt")]
     urls: String,
 }
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    // 1. Parse Command Line Arguments
     let args = Args::parse();
     
-    // 2. Open the file based on the provided path
     let file = File::open(&args.urls).map_err(|e| {
         format!("Failed to open '{}': {}. Make sure the file exists.", args.urls, e)
     })?;

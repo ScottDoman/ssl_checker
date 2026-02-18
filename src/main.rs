@@ -85,3 +85,5 @@ async fn check_ssl_expiry(domain: &str) -> Result<DateTime<Utc>, Box<dyn std::er
     let expiry_ts = parsed_cert.validity().not_after.timestamp();
     Ok(DateTime::from_timestamp(expiry_ts, 0).unwrap_or_default())
 }
+
+// add email functionality later?

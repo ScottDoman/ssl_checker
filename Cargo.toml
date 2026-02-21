@@ -8,8 +8,9 @@ author = "Scott Doman - scottdoman.com"
 tokio = { version = "1.36", features = ["full"] }
 rustls = "0.23"
 tokio-rustls = "0.26"
-rustls-platform-verifier = "0.5"
 webpki-roots = "0.26"
 chrono = "0.4"
 x509-parser = "0.16"
 clap = { version = "4.4", features = ["derive"] }
+axum = "0.7"
+askama = "0.12"

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Orwell SSL Monitoring Dashboard</title>
+    <meta http-equiv="refresh" content="60">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <style>
+        .VALID { color: #2ecc71; font-weight: bold; }
+        .EXPIRED { color: #e74c3c; font-weight: bold; }
+        .ERROR { color: #f1c40f; }
+        .timestamp { font-size: 0.8em; color: #888; margin-bottom: 20px; }
+        table { width: 100%; }
+    </style>
+</head>
+<body>
+    <h1>Orwell SSL Monitoring Dashboard</h1>
+    <div class="timestamp">Last Updated: {{ last_updated }} (Auto-refreshes every 60s)</div>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Domain</th>
+                <th>Status</th>
+                <th>Expires At</th>
+                <th>Days Remaining</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for site in sites %}
+            <tr>
+                <td>{{ site.domain }}</td>
+                <td class="{{ site.status }}">{{ site.status }}</td>
+                <td>{{ site.expiry }}</td>
+                <td>{{ site.days_left }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <p><small>Add new URLs to your text file; they will appear here on the next refresh.</small></p>
+</body>
+</html>
